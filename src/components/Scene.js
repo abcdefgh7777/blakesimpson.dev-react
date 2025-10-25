@@ -17,7 +17,7 @@ import GameboyScreen from './GameboyScreen'
 import Pill from './Pill'
 import Screen from './Screen'
 
-const Scene = ({ page, setPage, isMobile }) => {
+const Scene = ({ page, setPage, isMobile, setIsLoading }) => {
   const {
     actions,
     mergedRoomGeometry,
@@ -31,6 +31,15 @@ const Scene = ({ page, setPage, isMobile }) => {
   const [isSelectionEnabled, setSelectionEnabled] = useState(false)
   const [hovered, setHovered] = useState()
   const [currentPage, setCurrentPage] = useState()
+
+  useEffect(() => {
+    // Hide loading screen once model is loaded
+    if (actions && mergedRoomGeometry && setIsLoading) {
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 500)
+    }
+  }, [actions, mergedRoomGeometry, setIsLoading])
 
   const zoomIn = (action) => {
     actions[action].reset()
@@ -187,6 +196,7 @@ Scene.propTypes = {
   page: PropTypes.string,
   setPage: PropTypes.func,
   isMobile: PropTypes.bool,
+  setIsLoading: PropTypes.func,
 }
 
 export default Scene

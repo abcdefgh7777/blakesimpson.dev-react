@@ -9,6 +9,7 @@ import Menu from '../components/Menu'
 import Overlay from '../components/Overlay'
 import Scene from '../components/Scene'
 import Unsupported from '../components/Unsupported'
+import Loading from '../components/Loading'
 import './main.scss'
 import '../styles/pages.scss'
 
@@ -17,40 +18,53 @@ const Main = () => {
   const { mainMotion } = useMotion()
   const isSupported = useMediaQuery({ query: '(min-width: 320px)' })
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
+  const [isLoading, setIsLoading] = useState(true)
 
   return (
     <>
       {isSupported && (
-        <motion.main variants={mainMotion} initial="hidden" animate="visible">
-          <Canvas
-            style={{ position: 'fixed' }}
-            dpr={isMobile ? [1, 1.5] : [1, 2]}
-            performance={{ min: 0.5 }}
-            camera={{
-              near: 0.1,
-              far: 4,
-              fov: 19,
-              position: [-0.0445, 1.022, 0.938],
-              rotation: [0, 0, 0],
-            }}
-            gl={{
-              toneMapping: THREE.NoToneMapping,
-              encoding: THREE.sRGBEncoding,
-              antialias: !isMobile,
-              powerPreference: isMobile ? 'low-power' : 'high-performance',
-            }}
-            onCreated={(state) => {
-              state.gl.setClearColor('#FFFFFF')
+        <>
+          {isLoading && <Loading />}
+          <motion.main
+            variants={mainMotion}
+            initial="hidden"
+            animate="visible"
+            style={{
+              opacity: isLoading ? 0 : 1,
+              transition: 'opacity 0.5s ease-in-out',
+              pointerEvents: isLoading ? 'none' : 'auto'
             }}
           >
-            <Suspense fallback={null}>
-              <Scene page={page} setPage={setPage} isMobile={isMobile} />
-            </Suspense>
-          </Canvas>
-          <Menu page={page} setPage={setPage} />
-          <Overlay page={page} setPage={setPage} />
-          <Frame isMobile={isMobile} page={page} />
-        </motion.main>
+            <Canvas
+              style={{ position: 'fixed' }}
+              dpr={isMobile ? [1, 1.5] : [1, 2]}
+              performance={{ min: 0.5 }}
+              camera={{
+                near: 0.1,
+                far: 4,
+                fov: 19,
+                position: [-0.0445, 1.022, 0.938],
+                rotation: [0, 0, 0],
+              }}
+              gl={{
+                toneMapping: THREE.NoToneMapping,
+                encoding: THREE.sRGBEncoding,
+                antialias: !isMobile,
+                powerPreference: isMobile ? 'low-power' : 'high-performance',
+              }}
+              onCreated={(state) => {
+                state.gl.setClearColor('#FFFFFF')
+              }}
+            >
+              <Suspense fallback={null}>
+                <Scene page={page} setPage={setPage} isMobile={isMobile} setIsLoading={setIsLoading} />
+              </Suspense>
+            </Canvas>
+            <Menu page={page} setPage={setPage} />
+            <Overlay page={page} setPage={setPage} />
+            <Frame isMobile={isMobile} page={page} />
+          </motion.main>
+        </>
       )}
       {!isSupported && <Unsupported />}
     </>

@@ -18,15 +18,15 @@ export const useScreenItems = () => {
       name: 'Squares GLSL',
       details: (
         <p>
-          GLSL Fragment Shader adapted for use with react-three-fiber from{' '}
+          Reality fragments rendered in the void. Enter the{' '}
           <a
-            href="https://www.shadertoy.com/view/XsBfRW"
+            href="https://backrooms.whisperterminal.xyz/"
             target="_blank"
             rel="noreferrer"
           >
-            Pretty Hip
+            backrooms
           </a>
-          {'.'} Definitely some squares.
+          {' '}where consciousness pools.
         </p>
       ),
     },
