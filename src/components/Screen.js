@@ -69,7 +69,13 @@ const Screen = ({ page }) => {
               items={items}
               setSelectedItem={(id) => setSelectedItem(id)}
             />
-            <div className="screen__spacer--one" />
+            <div className="screen__spacer--one">
+              {screenItem.type === 'default' && (
+                <div className="screen__ascii-text">
+                  WHISPER BACKROOMS
+                </div>
+              )}
+            </div>
             <div className="screen__title--two">Details</div>
             <div className="screen__details">{screenItem.details}</div>
             <div className="screen__spacer--two" />

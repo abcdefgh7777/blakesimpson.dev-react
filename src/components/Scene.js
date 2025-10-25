@@ -11,8 +11,10 @@ import {
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import { useScene } from '../hooks/useScene'
+import Duck from './Duck'
 import Fan from './Fan'
 import GameboyScreen from './GameboyScreen'
+import Pill from './Pill'
 import Screen from './Screen'
 
 const Scene = ({ page, setPage }) => {
@@ -110,6 +112,7 @@ const Scene = ({ page, setPage }) => {
         <group>
           <Screen page={page} />
           <Fan speed={8} />
+          <Duck />
         </group>
         <group>
           <mesh geometry={mergedRoomGeometry} material={bakedRoomMaterial} />
@@ -126,8 +129,12 @@ const Scene = ({ page, setPage }) => {
             if (isSelectionEnabled) setHovered(null)
           }}
           onClick={(e) => {
-            if (isSelectionEnabled && e.object.page) {
-              setPage(e.object.page)
+            if (isSelectionEnabled) {
+              if (e.object.page) {
+                setPage(e.object.page)
+              } else if (e.object.name === 'Pill') {
+                window.open('https://pump.fun/', '_blank')
+              }
             }
           }}
         >
@@ -152,6 +159,9 @@ const Scene = ({ page, setPage }) => {
               </Select>
             )
           })}
+          <Select enabled={hovered === 'Pill'}>
+            <Pill name="Pill" />
+          </Select>
           <GameboyScreen page={page} />
         </group>
         <EffectComposer>

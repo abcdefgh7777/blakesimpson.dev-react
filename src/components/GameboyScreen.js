@@ -25,7 +25,7 @@ const GameboyScreen = ({ page }) => {
             transform
           >
             <div className="gameboy-screen">
-              <div className="gameboy-screen__title">Kataplexia</div>
+              <div className="gameboy-screen__title">Whisper</div>
             </div>
           </Html>
           <Html

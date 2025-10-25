@@ -15,7 +15,7 @@ import '../styles/pages.scss'
 const Main = () => {
   const [page, setPage] = useState('Home')
   const { mainMotion } = useMotion()
-  const isSupported = useMediaQuery({ query: '(min-width: 1280px)' })
+  const isSupported = useMediaQuery({ query: '(min-width: 320px)' })
 
   return (
     <>

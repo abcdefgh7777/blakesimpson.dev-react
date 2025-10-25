@@ -70,10 +70,26 @@
   &__spacer {
     &--one {
       min-height: 434px;
+      position: relative;
     }
 
     &--two {
       min-height: 74px;
     }
+  }
+
+  &__ascii-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Courier New', monospace;
+    font-size: 48px;
+    font-weight: bold;
+    color: #00ff00;
+    text-align: center;
+    letter-spacing: 4px;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+    white-space: nowrap;
   }
 }

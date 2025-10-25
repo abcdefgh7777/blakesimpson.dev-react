@@ -13,7 +13,7 @@ class ScreenMaterial extends ShaderMaterial {
         THREE.UniformsLib['fog'],
         {
           uTime: { value: 0 },
-          uMixColor: { value: new Color('#85c7e6') },
+          uMixColor: { value: new Color('#1a1a1a') },
         },
       ]),
       fog: true,

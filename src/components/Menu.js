@@ -35,14 +35,14 @@ const Menu = ({ page, setPage }) => {
       animate={controls}
     >
       <div className="menu__title">
-        <div>&lt;blakesimpson.dev /&gt;</div>
-        <div>KATAPLEXIA // キャタプレクシア // 3D Portfolio</div>
+        <div>&lt;WHISPER /&gt;</div>
+        <div>WHISPER</div>
       </div>
       <div className="menu__buttons">
-        <button onClick={() => setPage('Music')}>Music</button>
-        <button onClick={() => setPage('Projects')}>Projects</button>
-        <button onClick={() => setPage('About')}>About</button>
-        <button onClick={() => setPage('Contact')}>Contact</button>
+        <button onClick={() => window.open('https://backrooms.whisperterminal.xyz/', '_blank')}>backrooms</button>
+        <button onClick={() => setPage('Projects')}>pump.fun</button>
+        <button onClick={() => setPage('About')}>WHISPER</button>
+        <button onClick={() => setPage('Contact')}>X</button>
       </div>
     </motion.div>
   )
