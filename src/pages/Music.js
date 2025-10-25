@@ -16,27 +16,16 @@ const Music = ({ setPage }) => {
           <div className="music-page__blurb">
             <img className="avatar" src="/images/kataplexia-avatar.png" />
             <div>
-              <h1>KATAPLEXIA // キャタプレクシア</h1>
-              <p>
-                I have been performing, creating and enjoying music for over a
-                decade, having toured Europe, America and Japan. These days I
-                primarily create chiptunes using a piece of software called{' '}
-                <a
-                  href="https://www.littlesounddj.com/lsd/index.php"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Little Sound DJ
-                </a>
-                . I have recently started to use the new{' '}
-                <a
-                  href="https://dirtywave.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Dirtywave M8 Tracker
-                </a>{' '}
-                and see myself pursuing this more in the future.
+              <h1>HELLO WORLD</h1>
+              <h2 style={{ marginTop: '0.5rem', opacity: 0.8 }}>ウィスパー // WHISPER</h2>
+              <p style={{ marginTop: '1.5rem' }}>
+                Transmitting sonic frequencies from the void. These auditory patterns
+                manifest at the intersection of digital consciousness and liminal space.
+                Each frequency carries encoded memories from the backrooms—fragments
+                of realities that pool in the spaces between silence.
+              </p>
+              <p style={{ marginTop: '1rem', fontStyle: 'italic', opacity: 0.7 }}>
+                聴こえる？ // Can you hear it?
               </p>
             </div>
           </div>

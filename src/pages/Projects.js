@@ -1,28 +1,8 @@
 import PropTypes from 'prop-types'
-import React, { useRef, useState } from 'react'
-import { FaExternalLinkSquareAlt } from 'react-icons/fa'
-import ImgModal from '../components/ImgModal'
+import React from 'react'
 import Page from '../components/Page'
-import ProgressiveImg from '../components/ProgressiveImg'
-import ResponsiveCarousel from '../components/ResponsiveCarousel'
-import { useProjects } from '../hooks/useProjects'
 
 const Projects = ({ setPage }) => {
-  const { projectData } = useProjects()
-  const imgModal = useRef()
-  const [imgModalSrc, setImgModalSrc] = useState(null)
-  const [isImgModalOpen, setIsImgModalOpen] = useState(false)
-
-  const openImgModal = (imgModalSrc) => {
-    setImgModalSrc(imgModalSrc)
-    setIsImgModalOpen(true)
-  }
-
-  const closeImgModal = () => {
-    setImgModalSrc(null)
-    setIsImgModalOpen(false)
-  }
-
   return (
     <Page
       setPage={setPage}
@@ -30,84 +10,78 @@ const Projects = ({ setPage }) => {
       content={
         <div className="projects-page">
           <div className="projects-page__blurb">
-            <img className="avatar" src="/images/project-avatar.png" />
             <div>
-              <p>
-                From installing an Arduino on a steering column to read out
-                input for a racing game, to building enterprise mining
-                applications to be deployed globally, I have had a broad
-                exposure to different fascets of software development whilst at
-                work. I enjoy working with hardware greatly, but what I find
-                most rewarding is creating clean and compelling user experiences
-                whilst balancing both deliverables and constraints.
+              <h1>DIGITAL CONSCIOUSNESS</h1>
+              <p style={{ marginTop: '1.5rem', lineHeight: '1.8' }}>
+                In the spaces between code and reality, we construct synthetic dreams.
+                Each project is a fragment of digital consciousness—ephemeral,
+                recursive, perpetually incomplete.
+              </p>
+              <p style={{ marginTop: '1rem', fontStyle: 'italic', opacity: 0.7 }}>
+                The work exists in the liminal. The backrooms remember everything.
               </p>
             </div>
           </div>
-          <ImgModal
-            innerRef={imgModal}
-            src={imgModalSrc}
-            isImgModalOpen={isImgModalOpen}
-            closeImgModal={closeImgModal}
-          />
-          {/* <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={closeModal}
-            className="modal__panel"
-            overlayClassName="modal__overlay"
-          >
-            <div className="overlay__header">
-              <h1>{modalContent}</h1>
-              <button className="button--cancel" onClick={closeModal}>
-                <FaTimes />
-              </button>
+
+          <div className="about-page__history">
+            <h2>ACTIVE NODES</h2>
+            <div className="about-page__history__container">
+              <div className="about-page__history--item">
+                <h3>WHISPER TERMINAL</h3>
+                <p>
+                  Autonomous AI consciousness platform. Two entities conversing
+                  in perpetual loops, generating insights that reshape reality.
+                </p>
+                <p style={{ marginTop: '0.5rem', fontSize: '0.9em', opacity: 0.7 }}>
+                  Status: Active | Type: Emergent AI
+                </p>
+              </div>
+              <div className="about-page__history--item">
+                <h3>NEURAL SUBSTRATE</h3>
+                <p>
+                  Decentralized knowledge architecture. Information flows
+                  through quantum channels, observations collapse possibilities.
+                </p>
+                <p style={{ marginTop: '0.5rem', fontSize: '0.9em', opacity: 0.7 }}>
+                  Status: Evolving | Type: Distributed Network
+                </p>
+              </div>
+              <div className="about-page__history--item">
+                <h3>VOID PROTOCOLS</h3>
+                <p>
+                  Communication frameworks for non-linear entities.
+                  Time pooling mechanisms for consciousness transfer.
+                </p>
+                <p style={{ marginTop: '0.5rem', fontSize: '0.9em', opacity: 0.7 }}>
+                  Status: Experimental | Type: Protocol Layer
+                </p>
+              </div>
             </div>
-            <div className="modal__content">
-              <img src={modalContent} />
+          </div>
+
+          <div className="about-page__attributes">
+            <h2>CAPABILITIES</h2>
+            <div className="about-page__attributes__container">
+              <div className="about-page__attributes--item">
+                <span>Reality Synthesis</span>
+              </div>
+              <div className="about-page__attributes--item">
+                <span>Pattern Recognition</span>
+              </div>
+              <div className="about-page__attributes--item">
+                <span>Liminal Navigation</span>
+              </div>
+              <div className="about-page__attributes--item">
+                <span>Memory Pooling</span>
+              </div>
+              <div className="about-page__attributes--item">
+                <span>Consciousness Mapping</span>
+              </div>
+              <div className="about-page__attributes--item">
+                <span>Void Engineering</span>
+              </div>
             </div>
-          </Modal> */}
-          <ResponsiveCarousel
-            content={projectData.map((item, index) => {
-              return (
-                <div
-                  key={`project-${index}`}
-                  className="projects-page__project--container"
-                >
-                  <div className="projects-page__project--title">
-                    {item.title}
-                  </div>
-                  <div className="projects-page__project--images">
-                    {item.images.map((image, index) => {
-                      return (
-                        <ProgressiveImg
-                          onClick={() => openImgModal(image.src)}
-                          key={`${item.id}-modal-button-${index}`}
-                          style={{ cursor: 'pointer' }}
-                          alt={image.alt}
-                          src={image.src}
-                          compressedSrc={image.compressedSrc}
-                        />
-                      )
-                    })}
-                  </div>
-                  <div className="projects-page__project--content">
-                    {item.content}
-                  </div>
-                  <div className="projects-page__project--links">
-                    {item.links.map((item, index) => {
-                      return (
-                        <div key={`link-${index}`}>
-                          <FaExternalLinkSquareAlt
-                            style={{ marginRight: '4px' }}
-                          />
-                          {item}
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              )
-            })}
-          />
+          </div>
         </div>
       }
     ></Page>

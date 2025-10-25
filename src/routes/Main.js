@@ -49,7 +49,7 @@ const Main = () => {
           </Canvas>
           <Menu page={page} setPage={setPage} />
           <Overlay page={page} setPage={setPage} />
-          <Frame />
+          <Frame isMobile={isMobile} page={page} />
         </motion.main>
       )}
       {!isSupported && <Unsupported />}

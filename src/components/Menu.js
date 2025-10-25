@@ -42,7 +42,7 @@ const Menu = ({ page, setPage }) => {
         <button onClick={() => window.open('https://backrooms.whisperterminal.xyz/', '_blank')}>backrooms</button>
         <button onClick={() => setPage('Projects')}>pump.fun</button>
         <button onClick={() => setPage('About')}>WHISPER</button>
-        <button onClick={() => setPage('Contact')}>X</button>
+        <button onClick={() => window.open('https://x.com/whisper_terminal', '_blank')}>X</button>
       </div>
     </motion.div>
   )
