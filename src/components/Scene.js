@@ -17,7 +17,7 @@ import GameboyScreen from './GameboyScreen'
 import Pill from './Pill'
 import Screen from './Screen'
 
-const Scene = ({ page, setPage }) => {
+const Scene = ({ page, setPage, isMobile }) => {
   const {
     actions,
     mergedRoomGeometry,
@@ -164,16 +164,18 @@ const Scene = ({ page, setPage }) => {
           </Select>
           <GameboyScreen page={page} />
         </group>
-        <EffectComposer>
-          <Outline
-            blur
-            edgeStrength={5}
-            pulseSpeed={0.5}
-            hiddenEdgeColor={'#FFFFFF'}
-          />
-          <BrightnessContrast brightness={0.1} contrast={0.15} />
-          <SSAO />
-        </EffectComposer>
+        {!isMobile && (
+          <EffectComposer>
+            <Outline
+              blur
+              edgeStrength={5}
+              pulseSpeed={0.5}
+              hiddenEdgeColor={'#FFFFFF'}
+            />
+            <BrightnessContrast brightness={0.1} contrast={0.15} />
+            <SSAO />
+          </EffectComposer>
+        )}
       </Selection>
     </>
   )
@@ -184,6 +186,7 @@ Scene.displayName = 'Scene'
 Scene.propTypes = {
   page: PropTypes.string,
   setPage: PropTypes.func,
+  isMobile: PropTypes.bool,
 }
 
 export default Scene

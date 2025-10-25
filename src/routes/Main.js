@@ -16,6 +16,7 @@ const Main = () => {
   const [page, setPage] = useState('Home')
   const { mainMotion } = useMotion()
   const isSupported = useMediaQuery({ query: '(min-width: 320px)' })
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
 
   return (
     <>
@@ -23,6 +24,8 @@ const Main = () => {
         <motion.main variants={mainMotion} initial="hidden" animate="visible">
           <Canvas
             style={{ position: 'fixed' }}
+            dpr={isMobile ? [1, 1.5] : [1, 2]}
+            performance={{ min: 0.5 }}
             camera={{
               near: 0.1,
               far: 4,
@@ -33,13 +36,15 @@ const Main = () => {
             gl={{
               toneMapping: THREE.NoToneMapping,
               encoding: THREE.sRGBEncoding,
+              antialias: !isMobile,
+              powerPreference: isMobile ? 'low-power' : 'high-performance',
             }}
             onCreated={(state) => {
               state.gl.setClearColor('#FFFFFF')
             }}
           >
             <Suspense fallback={null}>
-              <Scene page={page} setPage={setPage} />
+              <Scene page={page} setPage={setPage} isMobile={isMobile} />
             </Suspense>
           </Canvas>
           <Menu page={page} setPage={setPage} />
