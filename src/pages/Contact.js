@@ -70,7 +70,7 @@ const Contact = ({ setPage }) => {
 
           <div className="contact-page__badges" style={{ marginTop: '2rem' }}>
             <a
-              href="https://x.com/whisper_terminal"
+              href="https://x.com/whisperterminal"
               target="_blank"
               rel="noreferrer"
             >

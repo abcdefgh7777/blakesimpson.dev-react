@@ -65,7 +65,7 @@ const Frame = ({ isMobile, page }) => {
           {isPlaying ? '🔊' : '🔇'}
         </button>
         <a
-          href="https://x.com/whisper_terminal"
+          href="https://x.com/whisperterminal"
           target="_blank"
           rel="noreferrer"
           className="frame__x-link"
